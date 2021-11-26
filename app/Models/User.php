@@ -11,17 +11,16 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    const USER_ADMIN = 1;
+    const USER_BUYER = 0;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -41,4 +40,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // HELPER FUNCTIONS
+    public function isAdmin()
+    {
+        return $this->role === self::USER_ADMIN;
+    }
+
+    public function isBuyer()
+    {
+        return $this->role === self::USER_BUYER;
+    }
 }
