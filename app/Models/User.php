@@ -51,4 +51,10 @@ class User extends Authenticatable
     {
         return $this->role === self::USER_BUYER;
     }
+
+    // RELATIONSHIPS
+    public function licenses()
+    {
+        return $this->hasMany(License::class);
+    }
 }

@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('Licenseit@123'),
             'role' => 1,
+            'mobile_no' => 9820098200,
             'remember_token' => Str::random(10),
         ]);
 
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('chirag3101'),
             'role' => 0,
+            'mobile_no' => 9067893300,
             'remember_token' => Str::random(10),
         ]);
     }
