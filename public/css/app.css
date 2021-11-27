@@ -14177,6 +14177,28 @@ li {
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.3);
 }
 
+.btn-orange {
+  background: #f6993f;
+  color: #fdf0e3;
+  transition: 0.3s all ease-in-out;
+}
+.btn-orange:hover {
+  background: #ee782e;
+  color: #ffffff;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn-hblack {
+  background: #232832;
+  color: #fff;
+  transition: 0.3s all ease-in-out;
+}
+.btn-hblack:hover {
+  background: #313641;
+  color: #ffffff;
+  transition: 0.3s all ease-in-out;
+}
+
 .text-hblack {
   color: #232832;
 }

@@ -96,6 +96,30 @@ li {
     box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.3);
 }
 
+.btn-orange {
+    background: $orange;
+    color: $cream;
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+        background: #ee782e;
+        color: #ffffff;
+        transition: 0.3s all ease-in-out;
+    }
+}
+
+.btn-hblack {
+    background: $hblack;
+    color: $white;
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+        background: #313641;
+        color: #ffffff;
+        transition: 0.3s all ease-in-out;
+    }
+}
+
 .text-hblack {
     color: $hblack;
 }
