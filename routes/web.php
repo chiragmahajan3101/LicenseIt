@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::get('password/reset', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.resets');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -8,7 +8,7 @@
             <div class="container-login-left"></div>
             <div class="container-login d-flex flex-row justify-content-between reveal animate__pulse animate__animated">
                 <div class="display-image animate__fadeIn animate__animated animate__slow">
-                    <img src="images/login/login.png" class="image-display" width="450em" alt="">
+                    <img src="{{asset('images/Auth/login.png')}}" class="image-display" width="450em" alt="">
                 </div>
                 <div class="animate__fadeIn animate__animated animate__slow flex-column">
                     <div class="intro-text">
@@ -41,18 +41,16 @@
                                         <label class="form-check-label" for="remember" style="padding: 0;">
                                             {{ __('Remember Me') }}
                                         </label>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                             <button type="submit" class="d-block mx-auto styled-btn styled-rounded text-muted float-left border border-dark btn-box" >
                                 <span class="styled-button-text" id="my-btn">Log in</span>
                             </button>
                             <div class="form-group-row mt-5">
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                    <a class="btn btn-link" href="{{ route('password.reset') }}">
+                                        Change Your Password?
                                     </a>
-                                @endif
                             </div>
                         </form>
                     </div>
@@ -68,5 +66,13 @@
 @section('scripts')
 <script>
     new RevealScroll($(".reveal"), "60%");
+    var typed = new Typed('.intro-text', {
+        strings: ["<h1>First sentence.</h1>", "<h1>Log in</h1>", "<h1>Manage License</h1>"],
+        typeSpeed: 80,
+        startDelay: 1,
+        backSpeed: 40,
+        loop: true,
+        showCursor: false
+        });
 </script>
 @endsection

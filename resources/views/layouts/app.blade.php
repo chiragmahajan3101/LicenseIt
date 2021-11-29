@@ -29,6 +29,7 @@
     <div id="app">
         @include('layouts.partials._navbar')
         <main class="py-4">
+            @include('layouts.partials._message')
             @yield('content')
             <a  href="#app"
                 title="GO TO TOP"
@@ -65,14 +66,6 @@
                 $('.navbar').addClass('bg-white');
                 $('.navbar').removeClass('bg-light');
             }
-        });
-        var typed = new Typed('.intro-text', {
-        strings: ["<h1>First sentence.</h1>", "<h1>Log in</h1>", "<h1>Manage License</h1>"],
-        typeSpeed: 80,
-        startDelay: 1,
-        backSpeed: 40,
-        loop: true,
-        showCursor: false
         });
     </script>
 

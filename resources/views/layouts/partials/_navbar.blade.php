@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light sticky-top bg-white">
     <div class="container">
         <a class="navbar-brand text-hblack" href="{{ url('/') }}" style="font-family: 'Rubik', sans-serif;">
-            <img src="images/logo2.svg" width="70em"> <span class="text-orange">L</span>icense<span class="text-orange">I</span>t
+            <img src="{{asset('images/logo2.svg')}}" width="70em"> <span class="text-orange">L</span>icense<span class="text-orange">I</span>t
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
