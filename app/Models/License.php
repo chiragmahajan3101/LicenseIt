@@ -2,12 +2,39 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class License extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    // BOOT METHODS
+    public static function boot()
+    {
+        parent::boot();
+        static::created(function (License $license) {
+            $oldLicenses = License::where('buyer_id', $license->buyer_id)->where('software_id', $license->software_id)->get();
+            foreach ($oldLicenses as $oldLicense) {
+                if ($oldLicense->expiry_date < now()) {
+                    $oldLicense->update(['active_status' => 1]);
+                }
+            }
+        });
+    }
+
+    // MUTATORS
+    public function setBuyDateAttribute(DateTime $buy_date)
+    {
+        $this->attributes['buy_date'] = $buy_date;
+        $date = Carbon::createFromFormat("Y.m.d", $buy_date->format('Y.m.d'));
+        $this->attributes['expiry_date'] = $date->addDays(365);
+    }
+
 
     // RELATIONSHIPS
 
