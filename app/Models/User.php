@@ -55,6 +55,6 @@ class User extends Authenticatable
     // RELATIONSHIPS
     public function licenses()
     {
-        return $this->hasMany(License::class);
+        return $this->hasMany(License::class, 'buyer_id');
     }
 }
