@@ -23,4 +23,4 @@ Auth::routes();
 Route::get('password/reset', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.resets');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
