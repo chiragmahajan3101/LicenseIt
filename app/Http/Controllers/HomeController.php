@@ -73,6 +73,6 @@ class HomeController extends Controller
 
         $maxLicenseBoughtBy = License::select('buyer_id', DB::raw('count(*) as total'))->orderBy('total', "DESC")->with('buyer')->limit(5)->groupBy('buyer_id')->get()->flatten()->toArray();
 
-        return view(compact(['numberOfUsers', 'numberOfProducts', 'totalActiveUsers', 'totalInActiveUsers', 'totalLicensesUnExpired', 'totalLicensesExpired', 'licenseSoldByMonth', 'maxLicenseBoughtBy']));
+        return view('dashboard', compact(['numberOfUsers', 'numberOfProducts', 'totalActiveUsers', 'totalInActiveUsers', 'totalLicensesUnExpired', 'totalLicensesExpired', 'licenseSoldByMonth', 'maxLicenseBoughtBy']));
     }
 }
