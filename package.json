@@ -25,6 +25,7 @@
         "animate.css": "^4.1.1",
         "jquery-smooth-scroll": "^2.2.0",
         "typed.js": "^2.0.12",
-        "waypoints": "^4.0.1"
+        "waypoints": "^4.0.1",
+        "chart.js": "^3.5.1"
     }
 }
