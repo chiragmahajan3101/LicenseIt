@@ -56,15 +56,11 @@
         $(window).scroll(function () {
             if ($(this).scrollTop() > 60) {
                 $('#back-to-top').fadeIn('2000');
-                $('.navbar').addClass('shadow-sm');
-                $('.navbar').removeClass('bg-white');
-                $('.navbar').addClass('bg-light');
+                $('.navbar').addClass('shadow-lg');
                 $('#back-to-top').removeClass('animate__bounceOutUp');
             } else {
                 $('#back-to-top').addClass('animate__bounceOutUp');
-                $('.navbar').removeClass('shadow-sm');
-                $('.navbar').addClass('bg-white');
-                $('.navbar').removeClass('bg-light');
+                $('.navbar').removeClass('shadow-lg');
             }
         });
     </script>
