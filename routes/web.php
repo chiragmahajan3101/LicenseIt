@@ -30,3 +30,6 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard
 
 // Billings
 Route::get('/billing', [LicenseController::class, 'bills'])->middleware(['auth'])->name('billing');
+
+// License
+Route::resource('/licenses', LicenseController::class);
