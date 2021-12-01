@@ -47,4 +47,32 @@ class License extends Model
     {
         return $this->belongsTo(User::class, 'buyer_id');
     }
+
+    //SCOPES
+    public function scopeSearch($query)
+    {
+        $email = request('email');
+        if ($email) {
+            $user = User::where('email', $email)->first();
+            $id = $user->id;
+            return $query->where("buyer_id", $id);
+        }
+        return $query;
+    }
+
+    //Getters
+
+    public function getExpiryDatesAttribute()
+    {
+        $date = Carbon::parse($this->expiry_date);
+        $date = $date->format('M d Y');
+        return $date;
+    }
+
+    public function getBuyDatesAttribute()
+    {
+        $date = Carbon::parse($this->buy_date);
+        $date = $date->format('M d Y');
+        return $date;
+    }
 }
