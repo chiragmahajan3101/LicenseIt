@@ -77,11 +77,15 @@ Billing | LicenseIt
 
 @section('scripts')
 <script>
+    new RevealScroll($(".reveal"), "60%");
+</script>
+<script>
     var datas = @json($billData);
 
     $(document).ready( function () {
         $('#bill_table_id').DataTable({
             data:datas,
+            scrollY: 400,
         });
     } );
 
