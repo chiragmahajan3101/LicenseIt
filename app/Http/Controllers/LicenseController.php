@@ -14,7 +14,31 @@ class LicenseController extends Controller
      */
     public function index()
     {
-        //
+        $licenses = License::with('software', 'buyer')
+            ->search()
+            ->orderBy('buy_date', "DESC")
+            ->get();
+
+        // dd($licenses);
+        $licensesData = [];
+        foreach ($licenses as $license) {
+            $eachData = [
+                $license->id,
+                $license->buyer->name,
+                $license->buyer->email,
+                $license->software->software_name,
+                $license->buy_dates,
+                $license->expire_status,
+                $license->active_status_style,
+                $license->used_count,
+                $license->action_buttons
+            ];
+            array_push($licensesData, $eachData);
+        }
+        // dd($licensesData);
+
+        $emails = License::with('buyer')->join('users', 'users.id', '=', 'licenses.buyer_id')->orderBy('users.name')->get()->keyBy('buyer_id');
+        return view('layouts.License.index', compact(['emails', 'licensesData']));
     }
 
     /**
@@ -57,7 +81,7 @@ class LicenseController extends Controller
      */
     public function edit(License $license)
     {
-        //
+        dd("hello");
     }
 
     /**
@@ -95,12 +119,7 @@ class LicenseController extends Controller
 
         $billData = [];
         foreach ($bills as $bill) {
-            if ($bill->expiry_date < now()) {
-                $expired = "<span class='text-danger'>$bill->expiry_dates</span>";
-                $eachData = [$bill->buyer->name, $bill->buyer->mobile_no, $bill->amount, $bill->software->software_name, $bill->buy_dates, $expired, $bill->transaction_id];
-            } else {
-                $eachData = [$bill->buyer->name, $bill->buyer->mobile_no, $bill->amount, $bill->software->software_name, $bill->buy_dates, $bill->expiry_dates, $bill->transaction_id];
-            }
+            $eachData = [$bill->buyer->name, $bill->buyer->mobile_no, $bill->amount, $bill->software->software_name, $bill->buy_dates, $bill->expiry_dates, $bill->transaction_id];
             array_push($billData, $eachData);
         }
         $emails = License::with('buyer')->join('users', 'users.id', '=', 'licenses.buyer_id')->orderBy('users.name')->get()->keyBy('buyer_id');
