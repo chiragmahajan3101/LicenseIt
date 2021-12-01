@@ -1,4 +1,4 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar mt-5">
+<nav class="col-md-2 d-none d-xl-block bg-light sidebar mt-5">
 <div class="sidebar-sticky">
         <ul>
         @if (auth()->user()->isAdmin())
@@ -14,17 +14,10 @@
             </a>
         </li>
 
-        <li class="my-sidebar-list my-sidebar-list-shadow @if (request()->is('license')) my-sidebar-list-active @endif ">
-            <a  href=""
+        <li class="my-sidebar-list my-sidebar-list-shadow @if (request()->is('licenses')) my-sidebar-list-active @endif ">
+            <a  href="{{route('licenses.index')}}"
                 class="d-block nav-link"><i class="fa fa-barcode pr-2" aria-hidden="true"></i>Manage License
             </a>
-            {{-- <div class="d-none sub-courses ">
-                <ul class="sub-courses-list">
-                    <li class="my-sidebar-list my-sidebar-list-shadow @if (request()->is('product')) my-sidebar-list-active @endif ">
-                        <a href="">aa</a>
-                    </li>
-                </ul>
-            </div> --}}
         </li>
         <li class="my-sidebar-list my-sidebar-list-shadow @if (request()->is('software')) my-sidebar-list-active @endif ">
             <a  href=""
