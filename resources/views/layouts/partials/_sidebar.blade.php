@@ -3,13 +3,13 @@
         <ul>
         @if (auth()->user()->isAdmin())
         <li class="my-sidebar-list my-sidebar-list-shadow @if (request()->is('dashboard')) my-sidebar-list-active @endif ">
-            <a  href=""
+            <a  href="{{route('dashboard')}}"
                 class="d-block nav-link">
                 <i class="fa fa-th-large pr-2" aria-hidden="true"></i> Dashboard
             </a>
         </li>
         <li class="my-sidebar-list my-sidebar-list-shadow @if (request()->is('billing')) my-sidebar-list-active @endif ">
-            <a  href=""
+            <a  href="{{route('billing')}}"
                 class="d-block nav-link"><i class="fa fa-file-text-o pr-2" aria-hidden="true"></i> Billing
             </a>
         </li>
