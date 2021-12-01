@@ -66,7 +66,32 @@ class License extends Model
     {
         $date = Carbon::parse($this->expiry_date);
         $date = $date->format('M d Y');
+        if ($this->expiry_date < now()) {
+            return "<span class='text-danger'>$date</span>";
+        }
         return $date;
+    }
+
+    public function getExpireStatusAttribute()
+    {
+        $date = Carbon::parse($this->expiry_date);
+        $daysAgo = $date->diffForHumans();
+        // dd($daysAgo);
+        $date = $date->format('M d Y');
+        if ($this->expiry_date < now()) {
+            return "<span class='text-danger'>Yes $daysAgo</span>";
+        } else {
+            return "No in $daysAgo";
+        }
+    }
+
+    public function getActiveStatusStyleAttribute()
+    {
+        if ($this->active_status) {
+            return "Yes";
+        } else {
+            return "<span class='text-danger'>No</span>";
+        }
     }
 
     public function getBuyDatesAttribute()
@@ -74,5 +99,17 @@ class License extends Model
         $date = Carbon::parse($this->buy_date);
         $date = $date->format('M d Y');
         return $date;
+    }
+
+    public function getUsedCountAttribute()
+    {
+        $date = Carbon::parse($this->buy_date);
+        $date = $date->diffForHumans();
+        $date = strstr($date, ' ago', true);
+        return $date;
+    }
+    public function getActionButtonsAttribute()
+    {
+        return ("<a href='/licenses/$this->id/edit' class='btn btn-sm btn-info' title='Edit your question'>Edit <i class='fa fa-edit fa-lg'></i></a>");
     }
 }
