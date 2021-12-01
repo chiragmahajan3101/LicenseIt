@@ -234,6 +234,17 @@ li {
     &-QA {
         background-color: #e8e8e8;
     }
+    @include smallScreen {
+        // margin: auto !important;
+    }
+    @include mediumScreen {
+        // margin: auto !important;
+        margin-left: 0 !important;
+    }
+    @include largeScreen {
+        // margin: auto !important;
+        margin-left: 0 !important;
+    }
 }
 
 my-card-border {
@@ -339,6 +350,15 @@ my-card-border {
         padding: 0 !important;
         box-sizing: border-box;
         margin-right: 0 !important;
+        @include smallScreen {
+            margin: 0 auto !important;
+        }
+        @include mediumScreen {
+            margin: 0 auto !important;
+        }
+        @include largeScreen {
+            margin: 0 auto !important;
+        }
     }
     &-login {
         margin: 4em;
@@ -591,6 +611,33 @@ label {
     //     hsla(226, 86%, 83%, 0.3) 100%
     // );
     background: #fff !important;
+
+    @include largeScreen {
+        display: hidden;
+    }
+    @include mediumScreen {
+        display: hidden;
+    }
+    @include smallScreen {
+        display: hidden;
+    }
+}
+
+.side-bar-in-nav {
+    display: hidden !important;
+
+    @include largeScreen {
+        display: block;
+        margin-left: 0.5em;
+    }
+    @include mediumScreen {
+        display: block;
+        margin-left: 0.5em;
+    }
+    @include smallScreen {
+        display: block;
+        margin-top: 0.5em;
+    }
 }
 
 .sidebar-sticky {
@@ -675,4 +722,28 @@ label {
 
 .transparent {
     opacity: 0.6;
+}
+
+.h1-responsive {
+    @include largeScreen {
+        font-size: 2rem;
+    }
+    @include mediumScreen {
+        font-size: 1.8rem;
+    }
+    @include smallScreen {
+        font-size: 1.5rem;
+    }
+}
+
+.h3-responsive {
+    @include largeScreen {
+        font-size: 1.575rem;
+    }
+    @include mediumScreen {
+        font-size: 1.3rem;
+    }
+    @include smallScreen {
+        font-size: 1.1rem;
+    }
 }

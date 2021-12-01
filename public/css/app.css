@@ -14740,6 +14740,16 @@ li {
 .my-card-QA {
   background-color: #e8e8e8;
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .my-card {
+    margin-left: 0 !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .my-card {
+    margin-left: 0 !important;
+  }
+}
 
 my-card-border {
   border: none !important;
@@ -14846,6 +14856,21 @@ my-card-border-radius {
   padding: 0 !important;
   box-sizing: border-box;
   margin-right: 0 !important;
+}
+@media (max-width: 768px) {
+  .container-sidebar {
+    margin: 0 auto !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .container-sidebar {
+    margin: 0 auto !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .container-sidebar {
+    margin: 0 auto !important;
+  }
 }
 .container-login {
   margin: 4em;
@@ -15096,6 +15121,43 @@ label {
   border: dashed 1px #000;
   background: #fff !important;
 }
+@media (min-width: 992px) and (max-width: 1200px) {
+  .sidebar {
+    display: hidden;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .sidebar {
+    display: hidden;
+  }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    display: hidden;
+  }
+}
+
+.side-bar-in-nav {
+  display: hidden !important;
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .side-bar-in-nav {
+    display: block;
+    margin-left: 0.5em;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .side-bar-in-nav {
+    display: block;
+    margin-left: 0.5em;
+  }
+}
+@media (max-width: 768px) {
+  .side-bar-in-nav {
+    display: block;
+    margin-top: 0.5em;
+  }
+}
 
 .sidebar-sticky {
   top: 4em;
@@ -15184,4 +15246,36 @@ label {
 
 .transparent {
   opacity: 0.6;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .h1-responsive {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .h1-responsive {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 768px) {
+  .h1-responsive {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .h3-responsive {
+    font-size: 1.575rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .h3-responsive {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 768px) {
+  .h3-responsive {
+    font-size: 1.1rem;
+  }
 }
