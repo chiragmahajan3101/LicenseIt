@@ -9,7 +9,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left Side Of Navbar -->
         <ul class="navbar-nav mr-auto">
-
         </ul>
 
         <!-- Right Side Of Navbar -->
@@ -48,8 +47,48 @@
                         </form>
                     </div>
                 </li>
+                <li class="nav-item dropdown side-bar-in-nav d-xl-none">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-white font-weight-bold btn btn-orange" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Navigate
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <ul>
+                            @if (auth()->user()->isAdmin())
+                                <li class="my-sidebar-list my-sidebar-list-shadow mx-auto @if (request()->is('dashboard')) my-sidebar-list-active @endif ">
+                                    <a  href="{{route('dashboard')}}"
+                                        class="d-block nav-link">
+                                        <i class="fa fa-th-large pr-2" aria-hidden="true"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li class="my-sidebar-list my-sidebar-list-shadow mx-auto @if (request()->is('billing')) my-sidebar-list-active @endif ">
+                                    <a  href="{{route('billing')}}"
+                                        class="d-block nav-link"><i class="fa fa-file-text-o pr-2" aria-hidden="true"></i> Billing
+                                    </a>
+                                </li>
+
+                                <li class="my-sidebar-list my-sidebar-list-shadow mx-auto @if (request()->is('licenses')) my-sidebar-list-active @endif ">
+                                    <a  href="{{route('licenses.index')}}"
+                                        class="d-block nav-link"><i class="fa fa-barcode pr-2" aria-hidden="true"></i>Manage License
+                                    </a>
+                                </li>
+                                <li class="my-sidebar-list my-sidebar-list-shadow mx-auto @if (request()->is('software')) my-sidebar-list-active @endif ">
+                                    <a  href=""
+                                        class="d-block nav-link "><i class="fa fa-cogs pr-2" aria-hidden="true"></i> Manage Software
+                                    </a>
+                                </li>
+                                <li class="my-sidebar-list my-sidebar-list-shadow mx-auto @if (request()->is('user')) my-sidebar-list-active @endif ">
+                                    <a  href=""
+                                        class="d-block nav-link "><i class="fa fa-users pr-2" aria-hidden="true"></i>Manage Users
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                </li>
             @endguest
         </ul>
     </div>
 </div>
 </nav>
+
