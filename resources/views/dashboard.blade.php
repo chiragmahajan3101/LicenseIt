@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+Dashboard | LicenseIt
+@endsection
+
 @section('content')
 @include('layouts.partials._sidebar')
 <div class="container container-sidebar container-birds p-0">
