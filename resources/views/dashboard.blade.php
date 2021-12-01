@@ -24,23 +24,19 @@ Dashboard | LicenseIt
                 <span class="my-underline-2"></span>
                 <h2 class="text-hblack font-weight-bold text-capitalize mt-3 sub-heading">Users And Software</h2>
             </div>
-            <div class="d-flex flex-column justify-content-around mb-3 mt-3 ml-5 section-divider my-card my-card-border">
-                <div class="d-flex flex-row justify-content-around col-md-12">
-                    <div class="font-weight-bolder text-hblack"> We have a total of <h3 class="text-orange d-inline">{{$numberOfUsers}}</h3> users enrolled.</div>
-                    <div class="font-weight-bolder text-hblack"> We have a total of <h3 class="text-orange d-inline">{{$numberOfProducts}}</h3> software license </div>
-                </div>
-                <div class="d-flex flex-row justify-content-around">
+            <div class="d-flex flex-row justify-content-around mb-3 mt-3 ml-5 section-divider my-card my-card-border">
                 <div
                     class="p-2
                     rounded d-flex flex-column align-items-center">
+                    <div class="font-weight-bolder text-hblack mb-4"> We have a total of <h3 class="text-orange d-inline h3-responsive">{{$numberOfUsers}}</h3> users enrolled.</div>
                     <div class="circle @if($numberOfUsers > $numberOfProducts) circle-more @else circle-less @endif"><h1 class="">{{$numberOfUsers}} <span class="">Users</span></h1></div>
                 </div>
                 <div
                     class="p-2
                     rounded d-flex flex-column align-items-center ">
+                    <div class="font-weight-bolder text-hblack mb-4"> We have a total of <h3 class="text-orange d-inline h3-responsive">{{$numberOfProducts}}</h3> software license </div>
                     <div class="circle @if($numberOfUsers < $numberOfProducts) circle-more @else circle-less @endif"><h1 class="">{{$numberOfProducts}} <span class="">Products</span></h1></div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
@@ -54,19 +50,19 @@ Dashboard | LicenseIt
             <div class="d-flex flex-column mb-3 ml-5 my-card my-card-border section-divider align-items-center">
                 <div class="content d-flex flex-column col-md-11">
                     <div class="d-flex flex-row justify-content-around">
-                        <h1>
+                        <h1 class="h1-responsive">
                             <strong
                                 class="font-weight-bolder text-hblack">
                                     Analyze
                             </strong>
                         </h1>
-                        <h1>
+                        <h1 class="h1-responsive">
                             <strong
                                 class="font-weight-bolder text-orange">
                                     Plan
                             </strong>
                         </h1>
-                        <h1>
+                        <h1 class="h1-responsive">
                             <strong
                                 class="font-weight-bolder text-hblack">
                                     Strategize
@@ -74,15 +70,13 @@ Dashboard | LicenseIt
                         </h1>
                     </div>
 
-                    <div class="d-flex flex-row justify-content-around col-md-12">
-                        <div class="font-weight-bolder text-hblack"> We have a total of <h3 class="text-orange d-inline">{{$totalActiveUsers+$totalInActiveUsers}}</h3> users enrolled.</div>
-                        <div class="font-weight-bolder text-hblack"> We have a total of <h3 class="text-orange d-inline">{{$totalLicensesUnExpired+$totalLicensesExpired}}</h3> licenses licensed.</div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between w-100">
+                    <div class="d-flex flex-row justify-content-between section-divider w-100 mt-2">
                         <div class="col-md-5 m-auto">
+                            <div class="font-weight-bolder text-hblack mb-2"> We have a total of <h3 class="text-orange d-inline h3-responsive">{{$totalActiveUsers+$totalInActiveUsers}}</h3> users enrolled.</div>
                             <canvas id="activeStatusAnalysisChart" width="250" height="250"></canvas>
                         </div>
                         <div class="col-md-5 m-auto">
+                            <div class="font-weight-bolder text-hblack mb-2"> We have a total of <h3 class="text-orange d-inline h3-responsive">{{$totalLicensesUnExpired+$totalLicensesExpired}}</h3> licenses licensed.</div>
                             <canvas id="licenseAnalysisChart" width="250" height="250"></canvas>
                         </div>
                     </div>
@@ -100,19 +94,19 @@ Dashboard | LicenseIt
             <div class="d-flex flex-column mb-3 ml-5 my-card my-card-border section-divider align-items-center">
                 <div class="content d-flex flex-column col-md-11">
                     <div class="d-flex flex-row justify-content-around">
-                        <h1>
+                        <h1 class="h1-responsive">
                             <strong
                                 class="font-weight-bolder text-hblack">
                                     Last
                             </strong>
                         </h1>
-                        <h1>
+                        <h1 class="h1-responsive">
                             <strong
                                 class="font-weight-bolder text-orange">
                                     Year
                             </strong>
                         </h1>
-                        <h1>
+                        <h1 class="h1-responsive">
                             <strong
                                 class="font-weight-bolder text-hblack">
                                     Sales
@@ -121,7 +115,7 @@ Dashboard | LicenseIt
                     </div>
 
                     <div class="d-flex flex-row justify-content-around col-md-12">
-                        <div class="font-weight-bolder text-hblack"> We have a total of <h3 class="text-orange d-inline">{{$licenseSoldByMonth["total"]}}</h3> licenses sold in the financial year <h3 class="text-orange d-inline">{{$year1}} - {{$year2}}</h3></div>
+                        <div class="font-weight-bolder text-hblack"> We have a total of <h3 class="text-orange d-inline h3-responsive">{{$licenseSoldByMonth["total"]}}</h3> licenses sold in the financial year <h3 class="text-orange d-inline h3-responsive">{{$year1}} - {{$year2}}</h3></div>
                     </div>
                     <div class="d-flex flex-row justify-content-between w-100">
                         <div class="col-md-11 m-auto">
@@ -142,25 +136,25 @@ Dashboard | LicenseIt
             <div class="d-flex flex-column mb-3 ml-5 my-card my-card-border section-divider align-items-center">
                 <div class="content d-flex flex-column col-md-11">
                     <div class="d-flex flex-row justify-content-around">
-                        <h1>
+                        <h1 class="h1-responsive">
                             <strong
                                 class="font-weight-bolder text-hblack">
                                     Maximum
                             </strong>
                         </h1>
-                        <h1>
+                        <h1 class="h1-responsive">
                             <strong
                                 class="font-weight-bolder text-orange">
                                     Licenses
                             </strong>
                         </h1>
-                        <h1>
+                        <h1 class="h1-responsive">
                             <strong
                                 class="font-weight-bolder text-hblack">
                                     Purchased
                             </strong>
                         </h1>
-                        <h1>
+                        <h1 class="h1-responsive">
                             <strong
                                 class="font-weight-bolder text-hblack">
                                     By
@@ -169,7 +163,7 @@ Dashboard | LicenseIt
                     </div>
 
                     <div class="d-flex flex-row justify-content-around col-md-12">
-                        <div class="font-weight-bolder text-hblack"> Maximum License Purchased By <h3 class="text-orange d-inline">{{$maxLicenseBoughtBy[0]['buyer']['name']}}</h3> Total Of <h3 class="text-orange d-inline">{{$maxLicenseBoughtBy[0]['total']}}</h3></div>
+                        <div class="font-weight-bolder text-hblack"> Maximum License Purchased By <h3 class="text-orange d-inline h3-responsive">{{$maxLicenseBoughtBy[0]['buyer']['name']}}</h3> Total Of <h3 class="text-orange d-inline">{{$maxLicenseBoughtBy[0]['total']}}</h3></div>
                     </div>
                     <div class="d-flex flex-row justify-content-between w-100">
                         <div class="col-md-11 m-auto">
