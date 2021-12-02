@@ -18,6 +18,7 @@ class License extends Model
     {
         parent::boot();
         static::created(function (License $license) {
+            $license->update(['active_status' => 1]);
             $oldLicenses = License::where('buyer_id', $license->buyer_id)->where('software_id', $license->software_id)->get();
             foreach ($oldLicenses as $oldLicense) {
                 if ($oldLicense->expiry_date < now()) {
@@ -105,7 +106,11 @@ class License extends Model
     {
         $date = Carbon::parse($this->buy_date);
         $date = $date->diffForHumans();
-        $date = strstr($date, ' ago', true);
+        if (strpos($date, 'ago') !== false) {
+            $date = strstr($date, ' ago', true);
+        } else {
+            $date = strstr($date, ' from', true);
+        }
         return $date;
     }
     public function getActionButtonsAttribute()
