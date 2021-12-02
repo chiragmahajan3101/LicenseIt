@@ -47,6 +47,7 @@ Billing | LicenseIt
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>User ID</th>
                             <th>Mobile No</th>
                             <th>Cost</th>
                             <th>Product Name</th>

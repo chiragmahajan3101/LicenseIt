@@ -10,8 +10,8 @@ Login | LicenseIt
         <div class="col-md-12">
             <div class="container-login-left bg-secondary"></div>
             <div class="container-login-left"></div>
-            <div class="container-login d-flex flex-row justify-content-between reveal animate__pulse animate__animated">
-                <div class="display-image animate__fadeIn animate__animated animate__slow">
+            <div class="container-login d-flex flex-row section-divider justify-content-between reveal animate__pulse animate__animated">
+                <div class="display-image animate__fadeIn animate__animated animate__slow d-none d-xl-block">
                     <img src="{{asset('images/Auth/login.png')}}" class="image-display" width="450em" alt="">
                 </div>
                 <div class="animate__fadeIn animate__animated animate__slow flex-column">

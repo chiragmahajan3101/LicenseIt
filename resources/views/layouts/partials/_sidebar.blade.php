@@ -25,7 +25,7 @@
             </a>
         </li>
         <li class="my-sidebar-list my-sidebar-list-shadow @if (request()->is('user')) my-sidebar-list-active @endif ">
-            <a  href=""
+            <a  href="{{route('users.index')}}"
                 class="d-block nav-link "><i class="fa fa-users pr-2" aria-hidden="true"></i>Manage Users
             </a>
         </li>
