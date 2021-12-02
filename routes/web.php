@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\LicenseController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +34,10 @@ Route::get('/billing', [LicenseController::class, 'bills'])->middleware(['auth']
 
 // License
 Route::resource('/licenses', LicenseController::class);
+
+// User
+Route::get('/users', [UserController::class, 'index'])->middleware(['auth'])->name('users.index');
+Route::post('/users', [UserController::class, 'store'])->middleware(['auth'])->name('users.store');
+Route::get('/users/create', [UserController::class, 'create'])->middleware(['auth'])->name('users.create');
+Route::put('/users/{user}', [UserController::class, 'update'])->middleware(['auth'])->name('users.update');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware(['auth'])->name('users.edit');
