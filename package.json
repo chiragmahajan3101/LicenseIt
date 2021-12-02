@@ -27,6 +27,7 @@
         "datatables.net": "^1.11.3",
         "datatables.net-dt": "^1.11.3",
         "jquery-smooth-scroll": "^2.2.0",
+        "select2": "^4.1.0-rc.0",
         "typed.js": "^2.0.12",
         "waypoints": "^4.0.1"
     }

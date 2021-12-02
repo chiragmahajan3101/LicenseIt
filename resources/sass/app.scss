@@ -16,6 +16,9 @@
 //DataTables
 @import url("~datatables.net-dt/css/jquery.dataTables.css");
 
+//Select2
+@import url("~select2/dist/css/select2.css");
+
 body {
     font-family: "Manrope", sans-serif;
     background: #ffffff;
@@ -222,6 +225,17 @@ li {
             border-radius: 10px;
         }
     }
+}
+
+// SELECT
+.select2-selection__rendered {
+    line-height: 2.5em !important;
+}
+.select2-container .select2-selection--single {
+    height: 2.7em !important;
+}
+.select2-selection__arrow {
+    height: 2.8em !important;
 }
 
 //DEFAULT-CARD
