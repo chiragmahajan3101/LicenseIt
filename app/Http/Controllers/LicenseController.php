@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\License\CreateLicenseRequest;
+use App\Http\Requests\License\UpdateLicenseRequest;
 use App\Models\License;
+use App\Models\Software;
+use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
 
 class LicenseController extends Controller
@@ -48,7 +53,13 @@ class LicenseController extends Controller
      */
     public function create()
     {
-        //
+        $buyers = User::where('role', 0)->get();
+        $buyersArray = [];
+        foreach ($buyers as $buyer) {
+            array_push($buyersArray, [$buyer->id, $buyer->name, $buyer->email]);
+        }
+        $softwares = Software::all();
+        return view('layouts.License.create', compact(['buyers', 'softwares', 'buyersArray']));
     }
 
     /**
@@ -57,9 +68,29 @@ class LicenseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateLicenseRequest $request)
     {
-        //
+        if ($request->buyer_id == 1) {
+            session()->flash('error', "Some Fishing Occurred, Please Retry");
+            return redirect()->back();
+        }
+        License::create([
+            'software_id' => $request->software_id,
+            'buyer_id' => $request->buyer_id,
+            'buy_date' => new DateTime($request->buy_date),
+            'hardware_id' => $request->hardware_id,
+            'activation_code' => $request->activation_code,
+            'amount' => $request->amount,
+            'transaction_id' => $request->transaction_id,
+            'notes' => $request->notes,
+            'active' => 1
+        ]);
+        $buyer_name = User::where('id', $request->buyer_id)->first();
+        $buyer_name = $buyer_name->name;
+        $software_name = Software::where('id', $request->software_id)->first();
+        $software_name = $software_name->software_name;
+        session()->flash('success', "New License Allocated To $buyer_name for the $software_name Software");
+        return redirect(route('licenses.index'));
     }
 
     /**
@@ -81,7 +112,13 @@ class LicenseController extends Controller
      */
     public function edit(License $license)
     {
-        dd("hello");
+        $buyers = User::where('role', 0)->get();
+        $buyersArray = [];
+        foreach ($buyers as $buyer) {
+            array_push($buyersArray, [$buyer->id, $buyer->name, $buyer->email]);
+        }
+        $softwares = Software::all();
+        return view('layouts.License.edit', compact(['license', 'buyers', 'softwares', 'buyersArray']));
     }
 
     /**
@@ -91,9 +128,23 @@ class LicenseController extends Controller
      * @param  \App\Models\License  $license
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, License $license)
+    public function update(UpdateLicenseRequest $request, License $license)
     {
-        //
+        $license->update([
+            'software_id' => $request->software_id,
+            'buyer_id' => $request->buyer_id,
+            'buy_date' => new DateTime($request->buy_date),
+            'hardware_id' => $request->hardware_id,
+            'activation_code' => $request->activation_code,
+            'amount' => $request->amount,
+            'transaction_id' => $request->transaction_id,
+            'notes' => $request->notes,
+            'active' => 1
+        ]);
+        $name = $license->buyer->name;
+        $softwareName = $license->software->software_name;
+        session()->flash('success', "License Bought By $name For $softwareName Software Is Updated");
+        return redirect(route('licenses.index'));
     }
 
     /**
@@ -119,7 +170,7 @@ class LicenseController extends Controller
 
         $billData = [];
         foreach ($bills as $bill) {
-            $eachData = [$bill->buyer->name, $bill->buyer->mobile_no, $bill->amount, $bill->software->software_name, $bill->buy_dates, $bill->expiry_dates, $bill->transaction_id];
+            $eachData = [$bill->buyer->name, $bill->buyer->company_id, $bill->buyer->mobile_no, $bill->amount, $bill->software->software_name, $bill->buy_dates, $bill->expiry_dates, $bill->transaction_id];
             array_push($billData, $eachData);
         }
         $emails = License::with('buyer')->join('users', 'users.id', '=', 'licenses.buyer_id')->orderBy('users.name')->get()->keyBy('buyer_id');
