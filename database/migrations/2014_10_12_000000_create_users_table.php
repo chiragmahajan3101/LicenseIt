@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->unsignedTinyInteger('role')->default(0);
             $table->unsignedBigInteger('mobile_no');
+            $table->string('company_id')->default("");
             $table->rememberToken();
             $table->timestamps();
         });

@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        User::create([
+        $chirag = User::create([
             'name' =>     "Chirag Mahajan",
             'email' => "chiragmahajan3101@gmail.com",
             'email_verified_at' => now(),
@@ -47,6 +47,19 @@ class DatabaseSeeder extends Seeder
         // $GLOBALS['activationdate'] = [new DateTime('2021-09-25'), new DateTime('2021-11-25'), new DateTime('2020-01-15'), new DateTime('2021-01-04'), new DateTime('2021-05-20')];
         // $GLOBALS['expiryDate'] = [new DateTime('2022-09-25'), new DateTime('2022-05-25'), new DateTime('2020-09-15'), new DateTime('2021-11-04'), new DateTime('2021-10-20')];
 
+        for ($i = 0; $i < rand(2, 4); $i++) {
+            $j = rand(0, 4);
+            $chirag->licenses()->create([
+                'software_id' => rand(1, 10),
+                'buy_date' => $GLOBALS['buyDate'][$j],
+                'amount' => rand(350, 1500),
+                'active_status' => random_int(0, 1),
+                'activation_code' => Str::random(6),
+                'hardware_id' => Str::random(9),
+                'transaction_id' => Str::random(10),
+                'notes' => Str::random(4)
+            ]);
+        }
         User::factory(8)->create()->each(function (User $user) {
             for ($i = 0; $i < rand(2, 4); $i++) {
                 $j = rand(0, 4);
